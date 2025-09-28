@@ -1,0 +1,64 @@
+<main class="h-full flex flex-col overflow-hidden">
+  @let data = data$ | async;
+
+  @if(data) {
+    <!-- Item Details -->
+    <section>
+      <div class="relative min-h-70">
+        <div class="pt-2 w-full absolute z-3">
+          <img ngSrc="/img/ios_status.png" alt="IOS status bar" [height]="46" [width]="390">
+        </div>
+        <img ngSrc="/img/item/{{ data.item.itemImg }}"
+             alt="{{ data.item.itemName }} image"
+             class="aspect-square rounded-b-3xl object-cover" priority fill>
+      </div>
+    </section>
+    <section class="border-t bg-orange-100 rounded-3xl p-5 py-3">
+      <h1 class="font-medium text-neutral-800 text-2xl/7 truncate my-1">{{ data.item.itemName }}</h1>
+      <p class="text-neutral-500 text-xs/2 mb-5">Init. price : {{ data.startingPrice }}</p>
+      <app-user-layout [user]="data.seller"/>
+    </section>
+
+    <!-- Activity List -->
+    <section class="bg-neutral-50 border-t rounded-3xl h-full overflow-hidden p-5">
+      <h3 class="text-neutral-800 text-medium">Recent Activity</h3>
+      <div class="flex items-center">
+        <div class="flex items-center *:me-[-15px] last:me-0">
+          @for(bid of data.bidLst | slice:5:8; track $index) {
+            <div class="bg-neutral-50 p-0.5 rounded-full">
+              <img ngSrc="/img/user/{{ bid.user.userImg }}" [height]="30" width="30"
+                   alt="{{ bid.user.firstName + ' ' + bid.user.lastName }} avatar" class="rounded-full">
+            </div>
+          }
+        </div>
+        <div class="border-2 border-neutral-800 rounded-full text-neutral-800 aspect-square flex items-center justify-center ms-5 w-[32px]">
+          <p class="text-xs/1 pt-1 font-medium"> +{{ data.bidLst.length - 3 }}</p>
+        </div>
+        <div class="ms-2 text-xs flex flex-col pt-1 text-neutral-800 font-medium">
+          <p>Live</p>
+          <div class="flex gap-3">
+            <span>Bidders</span>
+            <span class="text-neutral-500">•</span>
+            <span class="text-neutral-500">See all</span>
+          </div>
+        </div>
+      </div>
+      <div class="w-full mt-5 *:mb-2">
+        @for(bid of data.bidLst | slice: 0: 5 ; track $index) {
+          <div class="grid grid-cols-7 gap-3 p-0.5 first:bg-yellow-100 opacity-[{{ 1 - ($index / 10) }}]">
+            <div class="col-span-1 aspect-square relative rounded-full">
+              <img ngSrc="/img/user/{{ bid.user.userImg }}" class="rounded-full" fill
+                   alt="{{ bid.user.firstName + ' ' + bid.user.lastName }} avatar">
+            </div>
+            <div class="col-span-5">
+              <h3 class="text-sm font-medium">{{ bid.user.firstName + ' ' + bid.user.lastName }}</h3>
+            </div>
+          </div>
+        }
+      </div>
+    </section>
+
+  }
+
+
+</main>

@@ -1,0 +1,39 @@
+<article class="grid grid-cols-3 bg-yellow-100/70 relative">
+    <!-- Item thumbnail -->
+    <div class="col border-e relative">
+      <img ngSrc="http://localhost:8080/img/item/{{ data.item.itemImg }}" alt="{{ data.item.itemName }} Thumbnail"
+           class="object-cover aspect-square" fill/>
+    </div>
+
+    <!-- Item info -->
+    <div class="col-span-2 p-2">
+        <!-- Item categ + likes -->
+        <div class="flex justify-between">
+            <p class="text-sm/3 text-neutral-800/80 font-medium">
+                <small>
+                    #{{ data.item.categorie.label }}
+                </small>
+            </p>
+            <app-like/>
+        </div>
+
+        <!-- Item title -->
+        <h2 class="font-medium text-neutral-800 text-xl/5 truncate my-1">
+            {{ data.item.itemName }}
+        </h2>
+
+        <!-- Item seller -->
+        <app-user-layout [user]="data.seller"/>
+
+        <!-- Item bid + link -->
+        <p class="text-xs/3 text-neutral-800/90 mt-3">Curr. bid :</p>
+        <app-money [value]="data.currentBid > 0 ? data.currentBid : data.startingPrice"
+                   class="text-lg/5 contents" />
+    </div>
+    <div class="absolute pointer-events-none w-full h-full flex justify-end items-end p-2">
+      <a [routerLink]="['/auction' , data.saleId]" class="bg-neutral-800 text-neutral-50 px-5 pe-4 pt-1 rounded-full text-sm flex items-center gap-1 pointer-events-auto">
+        Bid
+        <ng-icon [color]="'#fff'" [name]="'remixArrowRightUpLine'" class="text-xl mb-1" />
+      </a>
+    </div>
+</article>

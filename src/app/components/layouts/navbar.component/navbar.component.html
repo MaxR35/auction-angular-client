@@ -1,0 +1,33 @@
+<div class="bg-neutral-50 pt-2 w-full">
+  <img ngSrc="http://localhost:8080/img/ios_status.png" alt="IOS status bar" [height]="46" [width]="390" priority>
+</div>
+<nav class="bg-neutral-50 w-full z-10 rounded-b-3xl">
+  <div class="grid grid-cols-12 p-3 items-center">
+    <div class="col-span-2 relative">
+      <img ngSrc="http://localhost:8080/img/brand_logo_transparant.png" alt="Project Logo"
+           [height]="40" [width]="40">
+    </div>
+    <div class="col-span-10 flex gap-2 justify-end items-center">
+      <div class="flex font-medium p-1 bg-green-800/15 rounded-full border">
+        <div class="text-neutral-800 rounded-full box-border flex pe-5 items-center">
+          <img ngSrc="http://localhost:8080/img/user/{{ user?.profile?.userImg }}"
+               [height]="32" [width]="32"
+               alt="{{ user?.profile?.firstName + ' ' + user?.profile?.lastName }} Avatar"
+               class="me-2 border rounded-full">
+          <div class="flex gap-1 items-center font-semibold pt-1.5 pb-1">
+            <img ngSrc="http://localhost:8080/img/icon/money.png"
+                 [width]="18" [height]="18" alt="Money Icon" class="mb-0.5 invert-10">
+            <span class="font-semibold text-sm/2">{{ user?.profile?.credit }}</span>
+          </div>
+        </div>
+      </div>
+      <div class="flex items-center bg-neutral-800 rounded-full border border-neutral-800">
+        <div class="p-2.5">
+          <img ngSrc="http://localhost:8080/img/icon/loupe.png"  [width]="18" [height]="18" alt="Search Icon"
+               class="w-4 brightness-120" height="24" width="24">
+        </div>
+      </div>
+    </div>
+
+  </div>
+</nav>
