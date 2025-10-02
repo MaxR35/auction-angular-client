@@ -1,0 +1,17 @@
+<div class="bg-neutral-800">
+  <div class="transition-all duration-400 ease-in-out relative cursor-pointer  px-2 border hover:rounded-xl border-neutral-800 bg-neutral-50 hover:bg-neutral-300"
+       [class.bg-neutral-800]="active"
+       [class.hover:bg-neutral-800]="active"
+       [class.text-neutral-300]="active"
+       (click)="onSelected()">
+    <div class="flex">
+      <div class="text-xs pt-1.5 pb-1">
+        <span>{{ "+ " + (category?.label || "All") }}</span>
+      </div>
+      <div class="ps-1 text-xs">
+        <small class="font-semibold">({{ category?.itemCount || 10 }})</small>
+      </div>
+    </div>
+  </div>
+</div>
+

@@ -5,6 +5,7 @@ import {AuctionComponent} from './components/auction/auction.component/auction.c
 import {authGuard} from './security/auth-guard/auth-guard';
 import {LoginComponent} from './components/login/login.component';
 import {loginGuard} from './security/login-guard/login-guard';
+import {ProfilComponent} from './components/profil/profil.component/profil.component';
 
 export const routes: Routes = [
   { path: 'login', component: LoginComponent, canActivate: [loginGuard] },
@@ -14,7 +15,8 @@ export const routes: Routes = [
     canActivate: [authGuard],
     children: [
       { path: 'home', component: HomeComponent },
-      { path: 'auction/:noVente', component: AuctionComponent },
+      { path: 'auction/:noSale', component: AuctionComponent },
+      { path: 'user/:noUser', component: ProfilComponent },
       { path: '', redirectTo: '/home', pathMatch: 'full' }
     ]
   },

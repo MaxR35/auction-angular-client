@@ -4,14 +4,13 @@ import { remixPokerHeartsFill, remixPokerHeartsLine, remixArrowRightUpLine } fro
 
 import {Sale} from '../../../models/sale';
 import {UserLayoutComponent} from '../user-layout.component/user-layout.component';
-import {NgOptimizedImage} from '@angular/common';
 import {MoneyComponent} from '../money-icon.component/money.component';
 import {LikeComponent} from '../like.component/like.component';
 import {RouterLink} from '@angular/router';
 
 @Component({
   selector: 'app-card',
-  imports: [NgIcon, UserLayoutComponent, NgOptimizedImage, MoneyComponent, LikeComponent, RouterLink],
+  imports: [UserLayoutComponent, MoneyComponent, LikeComponent, NgIcon, RouterLink,],
   templateUrl: './card.component.html',
   styleUrl: './card.component.css',
   viewProviders: [provideIcons({remixArrowRightUpLine})]

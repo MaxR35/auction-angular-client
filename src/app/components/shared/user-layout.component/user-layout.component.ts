@@ -12,5 +12,5 @@ import {NgOptimizedImage} from '@angular/common';
 })
 export class UserLayoutComponent {
   @Input() user!: UserProfile;
-  @Input() size: number = 24
+  @Input() size: number = 20
 }

@@ -1,9 +1,9 @@
-import {Categorie} from './categorie';
+import {Category} from './category';
 
 export interface Item {
   itemId: number
   itemName: string
   itemDesc: any
   itemImg: string
-  categorie: Categorie
+  category: Category
 }

@@ -1,4 +1,4 @@
-import {User, UserProfile} from './user';
+import {UserProfile} from './user';
 
 export interface Bid {
   bidId: number;

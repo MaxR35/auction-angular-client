@@ -16,4 +16,5 @@ import {mynaLetterAWavesSolid} from '@ng-icons/mynaui/solid';
 export class MoneyComponent {
   @Input() value!: number;
   @Input() size: string = '1em';
+  @Input() color: string = '#000';
 }
