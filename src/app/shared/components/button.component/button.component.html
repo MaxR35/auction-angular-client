@@ -1,0 +1,39 @@
+<button class="group/button bg-neutral-800 border w-full my-3 rounded-full flex items-center">
+  <div class="bg-neutral-50 rounded-full  border border-neutral-50 flex items-center w-full">
+    <div class="rounded-full flex items-center text-sm bg-neutral-800 ">
+      <div class="text-neutral-50 border-e border-neutral-50 py-1 pb-0.5 rounded-s-full px-3" (click)="onPlusClick()">
+        +
+      </div>
+      <div class="text-neutral-50  rounded-e-full py-0.5 pb-0.5  px-3" (click)="onMinusClick()">
+        -
+      </div>
+    </div>
+    <span class="mx-auto text-sm font-medium mt-1 pe-3">+ {{ bid }}</span>
+
+  </div>
+  <div class="flex text-neutral-50 w-full justify-center items-center text-sm gap-1">
+    <span class="mt-1">+ Bid for </span>
+    <app-money [value]="initialValue + bid"/>
+  </div>
+</button>
+
+
+<div class="flex items-center gap-1 my-3">
+  <div (click)="onPlusClick()" class="bg-neutral-800">
+    <div class="transition-all duration-400 ease-in-out relative cursor-pointer pt-0.5  px-3 border hover:rounded-xl border-neutral-800 bg-neutral-50 hover:bg-neutral-300">
+      +
+    </div>
+  </div>
+  <div (click)="onMinusClick()" class="bg-neutral-800">
+    <div class="transition-all duration-400 ease-in-out relative cursor-pointer pt-0.5  px-3 border hover:rounded-xl border-neutral-800 bg-neutral-50 hover:bg-neutral-300">
+      -
+    </div>
+  </div>
+  <div class="bg-neutral-800 w-full">
+    <div class="flex gap-1 items-center justify-center text-sm transition-all duration-400 ease-in-out relative cursor-pointer pt-0.5  px-3 border hover:rounded-xl border-neutral-800 bg-neutral-50 hover:bg-neutral-300">
+      <span class="mt-1">+ Bid for </span>
+      <app-money [value]="initialValue + bid"/>
+    </div>
+  </div>
+
+</div>

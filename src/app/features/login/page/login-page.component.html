@@ -1,0 +1,85 @@
+<header class="fixed top-0">
+  <nav class="w-full z-10">
+    <div class="grid grid-cols-12 p-3 items-center">
+      <div class="col-span-10 flex gap-2 items-center">
+      </div>
+      <div class="col-span-2 ps-4">
+        <img src="http://localhost:8080/img/brand_logo_transparant.png" alt="Project Logo" class="w-full border-2">
+      </div>
+    </div>
+  </nav>
+</header>
+<main class="h-[100vh] flex flex-col bg-lime-100">
+  <section class="my-auto p-5 text-sm">
+    <h1 class="text-3xl font-medium text-neutral-700 mb-5">Log In</h1>
+    <button class="mb-3 grid grid-cols-6 text-neutral-300 rounded-full py-2 px-3 bg-neutral-800 w-full font-medium items-center">
+      <img src="http://localhost:8080/img/icon/chercher.png" alt="google icon" class="col-span-1">
+      <span class="text-center col-span-4 mt-1">Continue with Gmail</span>
+    </button>
+    <button class="mb-15 grid grid-cols-6 text-neutral-300 rounded-full py-2 px-3 bg-neutral-800 w-full font-medium items-center">
+      <img src="http://localhost:8080/img/icon/github.png" alt="github icon" class="col-span-1 invert">
+      <span class="text-center col-span-4 mt-1">Continue with GitHub</span>
+    </button>
+    <form (ngSubmit)="onSubmit(loginForm)" #loginForm="ngForm">
+
+      <div class="mb-3 relative">
+        <input
+          type="email"
+          id="email"
+          name="username"
+          class="transition-colors rounded-full p-2 px-4 border-2 border-neutral-800 w-full text-neutral-800"
+          placeholder="example : john@doe.com"
+          [(ngModel)]="username"
+          [ngClass]="{'border-red-400' : errorMessage}"
+          required
+        />
+        <div class="absolute top-0 -translate-y-2.5 translate-x-4 ps-5">
+          <label for="email"
+                 [ngClass]="{'text-red-400' : errorMessage}"
+                 class="control-label font-medium text-neutral-800 bg-lime-100 px-2">
+            Email address
+          </label>
+        </div>
+      </div>
+
+      <div class="mb-2 relative">
+        <input
+          type="password"
+          id="password"
+          name="password"
+          class="transition-colors rounded-full p-2 px-4 border-2 border-neutral-800 w-full text-neutral-800"
+          [(ngModel)]="password"
+          [ngClass]="{'border-red-400' : errorMessage}"
+
+          required
+          minlength="6"
+        />
+        <div class="absolute top-0 -translate-y-2.5 translate-x-4 ps-5">
+          <label for="password"
+                 [ngClass]="{'text-red-400' : errorMessage}"
+                 class="control-label font-medium text-neutral-800 bg-lime-100 px-2">
+            Password
+          </label>
+        </div>
+      </div>
+      @if(errorMessage) {
+        <p class="text-red-500 mt-2 text-xs mb-2 text-end">{{ errorMessage }}</p>
+      }
+      <button
+        class="text-neutral-300 rounded-full py-2 bg-neutral-800 w-full font-semibold pt-2.5"
+        type="submit"
+        [disabled]="!loginForm.valid"
+      >
+        Log In
+      </button>
+
+
+    </form>
+
+    <p class="text-neutral-600 mt-4 text-xs font-medium mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing
+      elit, sed do eiusmod tempor incididunt ut labore et dolore
+      <br> magna aliqua.</p>
+
+  </section>
+</main>
+

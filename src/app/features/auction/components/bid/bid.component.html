@@ -1,0 +1,8 @@
+<div class="w-full flex items-center gap-2 p-1 pe-2">
+  <app-user-layout [user]="bid!.user"
+                   [info]="getTime() | timeAgo" [showInfo]="true"
+                   [size]="35"/>
+  <div class="ms-auto">
+    <app-money [value]="bid!.bidAmount" />
+  </div>
+</div>

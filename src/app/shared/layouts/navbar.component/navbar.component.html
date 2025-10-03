@@ -1,0 +1,27 @@
+
+<nav class="bg-neutral-50 w-full z-10">
+  <div class="grid grid-cols-12 p-1 items-center">
+    <div class="col-span-2 relative">
+      <img ngSrc="http://localhost:8080/img/brand_logo_transparant.png" alt="Project Logo"
+           [height]="36" [width]="36" class="border">
+    </div>
+    <div class="col-span-10 flex h-full gap-1 justify-end items-center">
+      <div class="flex font-medium p-0.5 border rounded-s-full bg-green-500/20">
+        <div class="text-neutral-800  box-border flex pe-3 items-center">
+          <img ngSrc="http://localhost:8080/img/user/{{ profile$()?.userImg }}"
+               [height]="30" [width]="30"
+               alt="{{ profile$()?.firstName + ' ' + profile$()?.lastName }} Avatar"
+               class="me-2 border rounded-full">
+
+          <app-money [value]="profile$()?.credit!!"  class="text-xs pt-1"/>
+        </div>
+      </div>
+      <div class="flex items-center border h-full border-neutral-800">
+        <div class="text-xs px-3 pt-1">
+          + Search
+        </div>
+      </div>
+    </div>
+
+  </div>
+</nav>

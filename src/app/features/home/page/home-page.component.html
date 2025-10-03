@@ -1,0 +1,21 @@
+<main class="bg-neutral-50 h-full overflow-hidden">
+  <section class="border-t">
+    <app-breadcrumb [items]="[{ label: 'home'}]"/>
+    <div class="mb-5 px-3">
+      <h3 class="text-3xl font-medium text-neutral-900">Curr. Auctions</h3>
+      <p class="text-xs text-neutral-500 mb-3">
+        +{{ (saleLst$()).length }} live auctions
+      </p>
+      <p class="text-end md:w-100 ms-auto text-sm">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+    </div>
+    <app-category-list/>
+    <div class="flex gap-1 flex-nowrap overflow-x-scroll">
+      @for(sale of saleLst$() ; track $index) {
+        <app-card [data]="sale" class="first:pl-3 last:pr-3"/>
+      }
+    </div>
+  </section>
+</main>
+
+
+

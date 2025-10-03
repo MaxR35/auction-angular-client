@@ -1,0 +1,30 @@
+<article class=" bg-neutral-800 group  w-30 overflow-hidden border border-neutral-800 relative">
+  <div class="transition-all duration-400 ease-in-out bg-neutral-50 hover:bg-neutral-200 hover:rounded-2xl">
+    <!-- Item thumbnail -->
+    <div class="pt-10 p-5 relative">
+      <img ngSrc="/img/moog-mavis_1_SYN0008306-000.png" alt="Moog Mavis" [width]="100" [height]="50"
+           class="transition-all ease-in-out duration-400 w-full shadow-2xl shadow-slate-600 group-hover:shadow-slate-800"/>
+
+      <div class="absolute top-0 start-0 size-full">
+        <a [routerLink]="['/auction/' + data.saleId]"
+          class="font-mono transition-all duration-400 ease-in-out flex justify-end text-xs p-1 ps-2 ms-auto bg-orange-500/40 group-hover:bg-orange-500/30 group-hover:rounded-bl-2xl w-fit">
+          <span>+ Details</span>
+          <ng-icon [name]="'remixArrowRightUpLine'" [size]="'1.1em'" class="pt-0.5"/>
+        </a>
+      </div>
+    </div>
+
+    <!-- Item info -->
+    <div class="p-2">
+      <p class="text-sm/3 text-neutral-800/60 font-medium">
+        <small>
+          #{{ data.item.category.label }}
+        </small>
+      </p>
+      <!-- Item title -->
+      <h2 class="font-medium uppercase text-neutral-800 text-xs/4 truncate my-1">
+        {{ data.item.itemName }}
+      </h2>
+    </div>
+  </div>
+</article>

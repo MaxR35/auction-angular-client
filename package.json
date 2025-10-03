@@ -33,6 +33,7 @@
     "@ng-icons/remixicon": "^32.1.0",
     "@tailwindcss/postcss": "^4.1.11",
     "glob": "^11.0.3",
+    "ngx-pipes": "^3.2.2",
     "postcss": "^8.5.6",
     "rxjs": "~7.8.0",
     "tailwindcss": "^4.1.11",

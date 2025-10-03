@@ -1,0 +1,72 @@
+<main class="bg-neutral-50 h-full overflow-hidden">
+  @if (sale$()) {
+    <section class="w-full border-t">
+      <app-breadcrumb [items]="[
+         { label: 'home', route: ['/home']},
+         { label: 'auction'},
+         { label: sale$()!.item.itemName | slugify },
+      ]"/>
+      <div class="px-20 py-10">
+        <div class="relative w-full aspect-[16/9]">
+          <img ngSrc="/img/moog-mavis_1_SYN0008306-000.png" alt="item thumbnail" fill priority
+               class="shadow-2xl shadow-slate-600"/>>
+        </div>
+      </div>
+      <app-countdown/>
+    </section>
+    <section class="w-full border-t">
+      <div class="p-3">
+        <div class="flex items-center">
+          <h3 class="text-xl/4 uppercase font-medium text-neutral-900">
+            {{ sale$()?.item?.itemName }}
+          </h3>
+          <app-like class="ms-auto"/>
+        </div>
+        <p class="text-xs text-neutral-500 lowercase mb-3 font-mono">
+          #{{ sale$()?.item?.category?.label }}
+        </p>
+        <app-user-layout [user]="sale$()?.seller!" [size]="35" [info]="'member since 3 mounth'" [showInfo]="true"/>
+
+        <div class="flex items-end gap-1 text-end text-sm mt-3 mb-1">
+          <h3 class="font-medium text-neutral-900">Start. price:</h3>
+          <app-money [value]="sale$()!.startingPrice"/>
+        </div>
+        <p class="text-xs text-neutral-600 text-justify">Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+          sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+          exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+      </div>
+    </section>
+    <section class="w-full">
+      <div class="px-3">
+        <h3 class="text-sm font-medium text-neutral-900 mb-1">Recent. activity</h3>
+        <div class="flex items-center gap-2 mb-3">
+          <div class="flex items-center *:me-[-15px]">
+            @for (bid of sale$()?.bidLst | slice:-4; track $index) {
+              <img [ngSrc]="`${environment.imgBaseUrl}/user/${bid.user.userImg}`" alt="bidder thumbnail" [width]="38"
+                   [height]="38" class="rounded-full border-2 border-white  last:me-0">
+            } @empty {
+              No bid atm
+            }
+          </div>
+          <div class="w-[35px] h-[35px] aspect-square border-2 rounded-full text-xs flex items-center justify-center">
+            <span class="pt-0.5 font-medium">+ {{ ((sale$()?.bidLst)!.length) - 4 }}</span>
+          </div>
+          <div class="text-sm/4 flex items-end gap-1">
+            <p class="font-medium mt-0.5">Live <br> bidders</p>
+            <span class="text-neutral-500">•</span>
+            <a>
+              <span class="text-neutral-500 hover:underline">See all</span>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="flex flex-col px-3">
+        @for (bid of sale$()?.bidLst | slice:0:4; track $index) {
+          <app-bid [bid]="bid" class="first:bg-yellow-400/20 rounded-full"/>
+        }
+
+        <app-button [initialValue]="sale$()!.bidLst[0].bidAmount"/>
+      </div>
+     </section>
+  }
+</main>

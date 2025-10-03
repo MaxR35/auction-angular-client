@@ -1,0 +1,101 @@
+<main class="bg-neutral-50 h-full overflow-hidden pt-10">
+  <section class="border-t">
+    @if (profile$()) {
+      <div class="w-full relative mb-30">
+        <div class="absolute top-0 start-0 size-full bg-neutral-600/70">
+          <app-breadcrumb [items]="[
+            { label: 'home', route: ['/home'] },
+            { label: 'profile' },
+            { label:  profile$()?.firstName + ' ' + profile$()?.lastName | slugify }
+          ]"/>
+        </div>
+        <img ngSrc="/img/pexels-apasaric-2078076.jpg" alt="user banner" class="aspect-3/1 object-cover" height="1066"
+             width="1600" priority>
+        <div class="absolute bottom-0 start-0 px-3 translate-y-3/4 flex items-end gap-2 w-full">
+          <img [ngSrc]="'http://localhost:8080/img/user/' + profile$()?.userImg" alt="Username thumbnail" [width]="120"
+               [height]="120" class="border-2 border-white rounded-full">
+
+          <div class="me-auto">
+            <h1 class="text-xl/5">{{ profile$()?.firstName + " " + profile$()?.lastName }}</h1>
+            <p class="text-neutral-800/60 text-xs mb-1">member since 3 months</p>
+            <div class="flex gap-1 mb-1">
+              @if(update) {
+                <div class="bg-neutral-800 w-fit">
+                  <div class="transition-all duration-400 ease-in-out relative cursor-pointer  px-2 border hover:rounded-xl border-neutral-800 bg-neutral-50 hover:bg-neutral-300">
+                    <div class="flex">
+                      <div class="text-xs pt-1.5 pb-1">
+                        <span>+ Edit profile</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              }
+              @else {
+                <div class="bg-neutral-800 w-fit">
+                  <div class="transition-all duration-400 ease-in-out relative cursor-pointer  px-2 border hover:rounded-xl border-neutral-800 bg-neutral-50 hover:bg-neutral-300">
+                    <div class="flex">
+                      <div class="text-xs pt-1.5 pb-1">
+                        <span>+ Follow</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="bg-neutral-800 w-fit">
+                  <div class="transition-all duration-400 ease-in-out relative cursor-pointer  px-2 border hover:rounded-xl border-neutral-800 bg-neutral-50 hover:bg-neutral-300">
+                    <div class="flex">
+                      <div class="text-xs pt-1.5 pb-1">
+                        <span>+ Send Message</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              }
+            </div>
+
+          </div>
+          <div class="items-center gap-1 mb-auto pt-10 hidden lg:flex">
+            <div class="bg-neutral-800 w-fit">
+              <div
+                class="transition-all duration-400 ease-in-out relative cursor-pointer border hover:rounded-xl border-neutral-800 bg-neutral-50 hover:bg-neutral-300">
+                <div class="flex p-1">
+                  <ng-icon [name]="'hugeSpotify'" [size]="'1.3em'"/>
+                </div>
+              </div>
+            </div>
+            <div class="bg-neutral-800 w-fit">
+              <div
+                class="transition-all duration-400 ease-in-out relative cursor-pointer border hover:rounded-xl border-neutral-800 bg-neutral-50 hover:bg-neutral-300">
+                <div class="flex p-1">
+                  <ng-icon [name]="'hugeInstagram'" [size]="'1.3em'"/>
+                </div>
+              </div>
+            </div>
+            <div class="bg-neutral-800 w-fit">
+              <div
+                class="transition-all duration-400 ease-in-out relative cursor-pointer border hover:rounded-xl border-neutral-800 bg-neutral-50 hover:bg-neutral-300">
+                <div class="flex p-1">
+                  <ng-icon [name]="'hugeTwitter'" [size]="'1.3em'"/>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="px-3">
+        <p class="text-xs mb-5 text-neutral-800/60">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+          ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+        <div class="flex gap-1">
+          <h3 class="text-sm text-neutral-900">Live. Sales</h3>
+          <span class="text-xs"><small>({{ profile$()?.sales ? profile$()?.sales?.length : 0 }})</small></span>
+        </div>
+        <div class="flex gap-1 mb-10">
+          @for (sale of profile$()?.sales; track $index) {
+            <app-mini-card [data]="sale"/>
+          }
+        </div>
+      </div>
+
+    }
+  </section>
+</main>

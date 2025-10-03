@@ -1,0 +1,11 @@
+<div class="flex gap-1 flex-nowrap overflow-x-scroll text-xs mb-1">
+  <app-category-filter-chip (selected)="onSelectedCategory(null)"
+                            [active]="categoryService.selectedCategory$()  === null"
+                            class="first:ml-3 last:mr-3"/>
+  @for (category of categories$(); track $index) {
+    <app-category-filter-chip [category]="category"
+                              (selected)="onSelectedCategory($event)"
+                              [active]="categoryService.selectedCategory$()  === category"
+                              class="first:ml-3 last:mr-3"/>
+  }
+</div>

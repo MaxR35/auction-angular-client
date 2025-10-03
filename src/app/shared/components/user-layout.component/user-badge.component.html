@@ -1,0 +1,13 @@
+<a [routerLink]="['/profile', user.userId]" class="flex items-center gap-1 w-fit text-neutral-700 group/user-badge">
+  <img [ngSrc]="'http://localhost:8080/img/user/' + user.userImg"
+       [width]="size" [height]="size"
+       [alt]="user.firstName + ' ' + user.lastName + ' thumbnail'"
+       class="rounded-full border"/>
+
+  <div class="flex-none">
+    <p class="text-sm/5 truncate font-medium group-hover/user-badge:underline">{{ user.firstName }} {{ user.lastName }}</p>
+    @if (showInfo) {
+      <p class="text-neutral-500 text-xs/2 mb-0.5">{{ info }}</p>
+    }
+  </div>
+</a>
